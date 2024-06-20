@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-
-import { Container, Heading, Text, VStack, Box, Input, Button, Image, Spinner, Alert, AlertIcon } from "@chakra-ui/react";
+import { Container, Heading, Text, VStack, Box, Input, Button, Image, Spinner, Alert, AlertIcon, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { FaUpload } from "react-icons/fa";
 
 const AimlApi = () => {
   const [text, setText] = useState("");
   const [textAnalysis, setTextAnalysis] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
+  const [imageFile, setImageFile] = useState(null);
   const [imageRecognition, setImageRecognition] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -35,13 +36,15 @@ const AimlApi = () => {
     setLoading(true);
     setError(null);
     try {
+      const formData = new FormData();
+      formData.append("image", imageFile);
+
       const response = await fetch("https://api.aimlapi.com/v1/image/recognition", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer YOUR_API_KEY`,
         },
-        body: JSON.stringify({ image_url: imageUrl }),
+        body: formData,
       });
       const data = await response.json();
       setImageRecognition(data);
@@ -92,6 +95,14 @@ const AimlApi = () => {
             onChange={(e) => setImageUrl(e.target.value)}
             mb={4}
           />
+          <InputGroup mb={4}>
+            <InputLeftElement pointerEvents="none" children={<FaUpload />} />
+            <Input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImageFile(e.target.files[0])}
+            />
+          </InputGroup>
           <Button onClick={handleImageRecognition}>Recognize Image</Button>
           {loading && <Spinner />}
           {error && (

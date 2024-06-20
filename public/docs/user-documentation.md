@@ -32,6 +32,8 @@ The dashboard consists of several sections:
 - **Subscriptions & Costs**: Track subscriptions, fees, memberships, and other monthly costs.
 - **Daily/Weekly/Monthly Summaries**: View summaries of your activities.
 - **Notifications**: Manage and view notifications.
+- **Navigation Bar**: Use the navigation bar at the top of the page to quickly access different sections of the dashboard.
+- **Footer**: The footer contains basic information and links.
 
 ## ManicTime API Integration
 The ManicTime API integration allows you to fetch and display user data and activities from ManicTime.
@@ -43,6 +45,10 @@ The ManicTime API integration allows you to fetch and display user data and acti
 ### Fetching Activities
 1. The dashboard will also fetch and display your activities for a specified date range.
 2. You can view details such as the activity name, start time, and end time.
+
+### Selecting Date Range
+1. Use the date range picker to select the date range for fetching activities.
+2. The activities for the selected date range will be displayed.
 
 ## AIML API Integration
 The AIML API integration provides text analysis and image recognition capabilities.
@@ -58,6 +64,10 @@ The AIML API integration provides text analysis and image recognition capabiliti
 2. Click the "Recognize Image" button to perform the recognition.
 3. The recognition result and the image will be displayed below the button.
 
+### Image Upload
+1. Use the file input to upload an image for recognition.
+2. The recognition result will be displayed below the input.
+
 ## Codehooks API Integration
 The Codehooks API integration allows you to create serverless functions and perform database operations.
 
@@ -66,6 +76,10 @@ The Codehooks API integration allows you to create serverless functions and perf
 2. Enter the function name and code in the respective input fields under the "Create Serverless Function" section.
 3. Click the "Create Function" button to create the function.
 4. The created function details will be displayed below the button.
+
+### Writing Serverless Functions
+1. Use the code editor to write your serverless function code.
+2. The created function details will be displayed below the editor.
 
 ### Performing Database Operations
 1. Enter the collection name and data (in JSON format) in the respective input fields under the "Database Operations" section.

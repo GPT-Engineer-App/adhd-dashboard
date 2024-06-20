@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container, VStack, Heading, Box, Text, Grid, GridItem, Flex, Switch, useColorMode, Input, Button, HStack } from "@chakra-ui/react";
 import { FaClock, FaTasks, FaImage, FaProjectDiagram, FaDollarSign, FaBell, FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -9,10 +10,17 @@ const Index = () => {
   const handleSearch = () => {
     // Implement search functionality here
     console.log("Searching for:", searchQuery);
+    // For now, just log the search query
   };
 
   return (
     <Container maxW="container.xl" p={4}>
+      <HStack spacing={4} mb={4}>
+        <Link to="/">Home</Link>
+        <Link to="/manictime">ManicTime</Link>
+        <Link to="/aimlapi">AIML API</Link>
+        <Link to="/codehooks">Codehooks</Link>
+      </HStack>
       <Flex justifyContent="space-between" alignItems="center" mb={4}>
         <Heading as="h1" size="xl">
           ADHD Management Dashboard
@@ -93,6 +101,9 @@ const Index = () => {
           <Text>Notification content goes here...</Text>
         </Box>
       </VStack>
+      <Box as="footer" mt={8} p={4} bg="gray.200" textAlign="center">
+        <Text>&copy; 2023 ADHD Management Dashboard. All rights reserved.</Text>
+      </Box>
     </Container>
   );
 };
