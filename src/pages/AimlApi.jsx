@@ -5,6 +5,10 @@ import { FaUpload } from "react-icons/fa";
 
 const AimlApi = () => {
   // Ensure getUiOptions is correctly defined and exported in ui.js
+  console.log("getUiOptions:", getUiOptions);
+  if (typeof getUiOptions !== 'function') {
+    throw new Error("getUiOptions is not a function");
+  }
   const uiOptions = getUiOptions();
   console.log(uiOptions);
 
