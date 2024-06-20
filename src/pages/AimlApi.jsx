@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { getUiOptions } from '../ui'; // Adjust the path as necessary
 import { Container, Heading, Text, VStack, Box, Input, Button, Image, Spinner, Alert, AlertIcon, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FaUpload } from "react-icons/fa";
 
 const AimlApi = () => {
+  const uiOptions = getUiOptions();
+  console.log(uiOptions);
+
   const [text, setText] = useState("");
   const [textAnalysis, setTextAnalysis] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
