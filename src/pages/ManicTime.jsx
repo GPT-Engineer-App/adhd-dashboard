@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Heading, Text, VStack, Box } from "@chakra-ui/react";
+import { Container, Heading, Text, VStack, Box, Spinner, Alert, AlertIcon } from "@chakra-ui/react";
 
 const ManicTime = () => {
   const [userData, setUserData] = useState(null);
   const [activities, setActivities] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -16,6 +18,7 @@ const ManicTime = () => {
         });
         setUserData(response.data);
       } catch (error) {
+        setError("Error fetching user data");
         console.error("Error fetching user data:", error);
       }
     };
@@ -33,12 +36,19 @@ const ManicTime = () => {
         });
         setActivities(response.data);
       } catch (error) {
+        setError("Error fetching activities");
         console.error("Error fetching activities:", error);
       }
     };
 
-    fetchUserData();
-    fetchActivities();
+    const fetchData = async () => {
+      setLoading(true);
+      await fetchUserData();
+      await fetchActivities();
+      setLoading(false);
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -46,6 +56,13 @@ const ManicTime = () => {
       <Heading as="h1" size="xl" mb={4}>
         ManicTime Data
       </Heading>
+      {loading && <Spinner />}
+      {error && (
+        <Alert status="error" mb={4}>
+          <AlertIcon />
+          {error}
+        </Alert>
+      )}
       {userData && (
         <Box mb={8}>
           <Heading as="h2" size="lg">

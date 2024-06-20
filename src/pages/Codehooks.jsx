@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Container, Heading, Text, VStack, Box, Input, Button } from "@chakra-ui/react";
+import { Container, Heading, Text, VStack, Box, Input, Button, Spinner, Alert, AlertIcon } from "@chakra-ui/react";
 
 const Codehooks = () => {
   const [functionName, setFunctionName] = useState("");
@@ -9,8 +9,12 @@ const Codehooks = () => {
   const [collectionName, setCollectionName] = useState("");
   const [collectionData, setCollectionData] = useState("");
   const [databaseResponse, setDatabaseResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleCreateFunction = async () => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await axios.post(
         "https://api.codehooks.io/v1/functions",
@@ -23,11 +27,15 @@ const Codehooks = () => {
       );
       setServerlessFunction(response.data);
     } catch (error) {
+      setError("Error creating serverless function");
       console.error("Error creating serverless function:", error);
     }
+    setLoading(false);
   };
 
   const handleDatabaseOperation = async (method) => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await axios({
         method,
@@ -39,8 +47,10 @@ const Codehooks = () => {
       });
       setDatabaseResponse(response.data);
     } catch (error) {
+      setError(`Error performing ${method} operation`);
       console.error(`Error performing ${method} operation:`, error);
     }
+    setLoading(false);
   };
 
   return (
@@ -66,6 +76,13 @@ const Codehooks = () => {
             mb={4}
           />
           <Button onClick={handleCreateFunction}>Create Function</Button>
+          {loading && <Spinner />}
+          {error && (
+            <Alert status="error" mb={4}>
+              <AlertIcon />
+              {error}
+            </Alert>
+          )}
           {serverlessFunction && (
             <Box mt={4} p={4} bg="gray.100" borderRadius="md">
               <Text>Function Created: {serverlessFunction.name}</Text>
@@ -92,6 +109,13 @@ const Codehooks = () => {
           <Button onClick={() => handleDatabaseOperation("GET")}>Read Documents</Button>
           <Button onClick={() => handleDatabaseOperation("PUT")}>Update Document</Button>
           <Button onClick={() => handleDatabaseOperation("DELETE")}>Delete Document</Button>
+          {loading && <Spinner />}
+          {error && (
+            <Alert status="error" mb={4}>
+              <AlertIcon />
+              {error}
+            </Alert>
+          )}
           {databaseResponse && (
             <Box mt={4} p={4} bg="gray.100" borderRadius="md">
               <Text>Database Response: {JSON.stringify(databaseResponse, null, 2)}</Text>
