@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { getUiOptions } from '../ui'; // Adjust the path as necessary
+import { getUiOptions } from '../ui'; // Ensure this path is correct
 import { Container, Heading, Text, VStack, Box, Input, Button, Image, Spinner, Alert, AlertIcon, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FaUpload } from "react-icons/fa";
 
 const AimlApi = () => {
+  // Ensure getUiOptions is correctly defined and exported in ui.js
   const uiOptions = getUiOptions();
   console.log(uiOptions);
 
