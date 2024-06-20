@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Container, Heading, Text, VStack, Box, Input, Button, Spinner, Alert, AlertIcon } from "@chakra-ui/react";
+import { Container, Heading, Text, VStack, Box, Input, Button, Spinner, Alert, AlertIcon, CodeEditor } from "@chakra-ui/react";
 
 const Codehooks = () => {
   const [functionName, setFunctionName] = useState("");
@@ -69,10 +69,11 @@ const Codehooks = () => {
             onChange={(e) => setFunctionName(e.target.value)}
             mb={4}
           />
-          <Input
-            placeholder="Function Code"
+          <CodeEditor
             value={functionCode}
-            onChange={(e) => setFunctionCode(e.target.value)}
+            onChange={(code) => setFunctionCode(code)}
+            language="javascript"
+            placeholder="Write your serverless function code here..."
             mb={4}
           />
           <Button onClick={handleCreateFunction}>Create Function</Button>
@@ -105,10 +106,10 @@ const Codehooks = () => {
             onChange={(e) => setCollectionData(e.target.value)}
             mb={4}
           />
-          <Button onClick={() => handleDatabaseOperation("POST")}>Create Document</Button>
-          <Button onClick={() => handleDatabaseOperation("GET")}>Read Documents</Button>
-          <Button onClick={() => handleDatabaseOperation("PUT")}>Update Document</Button>
-          <Button onClick={() => handleDatabaseOperation("DELETE")}>Delete Document</Button>
+          <Button onClick={() => handleDatabaseOperation("POST")} mb={2}>Create Document</Button>
+          <Button onClick={() => handleDatabaseOperation("GET")} mb={2}>Read Documents</Button>
+          <Button onClick={() => handleDatabaseOperation("PUT")} mb={2}>Update Document</Button>
+          <Button onClick={() => handleDatabaseOperation("DELETE")} mb={2}>Delete Document</Button>
           {loading && <Spinner />}
           {error && (
             <Alert status="error" mb={4}>
