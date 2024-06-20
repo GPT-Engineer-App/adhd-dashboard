@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 import { Container, Heading, Text, VStack, Box, Input, Button, Image, Spinner, Alert, AlertIcon } from "@chakra-ui/react";
 
 const AimlApi = () => {
@@ -14,16 +14,16 @@ const AimlApi = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post(
-        "https://api.aimlapi.com/v1/text/analysis",
-        { text },
-        {
-          headers: {
-            Authorization: `Bearer YOUR_API_KEY`,
-          },
-        }
-      );
-      setTextAnalysis(response.data);
+      const response = await fetch("https://api.aimlapi.com/v1/text/analysis", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer YOUR_API_KEY`,
+        },
+        body: JSON.stringify({ text }),
+      });
+      const data = await response.json();
+      setTextAnalysis(data);
     } catch (error) {
       setError("Error analyzing text");
       console.error("Error analyzing text:", error);
@@ -35,16 +35,16 @@ const AimlApi = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post(
-        "https://api.aimlapi.com/v1/image/recognition",
-        { image_url: imageUrl },
-        {
-          headers: {
-            Authorization: `Bearer YOUR_API_KEY`,
-          },
-        }
-      );
-      setImageRecognition(response.data);
+      const response = await fetch("https://api.aimlapi.com/v1/image/recognition", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer YOUR_API_KEY`,
+        },
+        body: JSON.stringify({ image_url: imageUrl }),
+      });
+      const data = await response.json();
+      setImageRecognition(data);
     } catch (error) {
       setError("Error recognizing image");
       console.error("Error recognizing image:", error);
