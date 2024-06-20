@@ -1,5 +1,5 @@
 import { Container, VStack, Heading, Box, Text, Grid, GridItem, Image } from "@chakra-ui/react";
-import { FaClock, FaTasks, FaImage } from "react-icons/fa";
+import { FaClock, FaTasks, FaImage, FaProjectDiagram, FaDollarSign } from "react-icons/fa";
 
 const Index = () => {
   return (
@@ -38,6 +38,24 @@ const Index = () => {
               </Heading>
             </Box>
             <Text mt={2}>Review your activity screenshots.</Text>
+          </GridItem>
+          <GridItem w="100%" h="10" bg="orange.500" borderRadius="md" p={4} color="white">
+            <Box display="flex" alignItems="center">
+              <FaProjectDiagram size="24px" />
+              <Heading as="h2" size="md" ml={2}>
+                App Context & Progress
+              </Heading>
+            </Box>
+            <Text mt={2}>Track the context and progress of apps being created, including their subject/idea.</Text>
+          </GridItem>
+          <GridItem w="100%" h="10" bg="red.500" borderRadius="md" p={4} color="white">
+            <Box display="flex" alignItems="center">
+              <FaDollarSign size="24px" />
+              <Heading as="h2" size="md" ml={2}>
+                Subscriptions & Costs
+              </Heading>
+            </Box>
+            <Text mt={2}>Track subscriptions, fees, memberships, and other monthly costs.</Text>
           </GridItem>
         </Grid>
       </VStack>
