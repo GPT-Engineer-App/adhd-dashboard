@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Container, Heading, Text, VStack, Box, Input, Button, Spinner, Alert, AlertIcon, CodeEditor } from "@chakra-ui/react";
+import { Container, Heading, Text, VStack, Box, Input, Button, Spinner, Alert, AlertIcon, Textarea } from "@chakra-ui/react";
 
 const Codehooks = () => {
   const [functionName, setFunctionName] = useState("");
@@ -69,10 +69,9 @@ const Codehooks = () => {
             onChange={(e) => setFunctionName(e.target.value)}
             mb={4}
           />
-          <CodeEditor
+          <Textarea
             value={functionCode}
-            onChange={(code) => setFunctionCode(code)}
-            language="javascript"
+            onChange={(e) => setFunctionCode(e.target.value)}
             placeholder="Write your serverless function code here..."
             mb={4}
           />
