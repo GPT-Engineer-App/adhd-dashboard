@@ -20,6 +20,7 @@ const Index = () => {
         <Link to="/manictime">ManicTime</Link>
         <Link to="/aimlapi">AIML API</Link>
         <Link to="/codehooks">Codehooks</Link>
+        <Link to="/about">About</Link>
       </HStack>
       <Flex justifyContent="space-between" alignItems="center" mb={4}>
         <Heading as="h1" size="xl">
@@ -90,15 +91,97 @@ const Index = () => {
         </Grid>
         <Box mt={8}>
           <Heading as="h3" size="lg" mb={4}>
-            Daily/Weekly/Monthly Summaries
+            Project Scope and Requirements
           </Heading>
-          <Text>Summary content goes here...</Text>
+          <Text>
+            The ADHD Management Dashboard is designed to help users track their time, manage tasks, and review screenshots to stay focused and productive. The project includes the following features:
+            <ul>
+              <li>Time Tracking</li>
+              <li>Task Management</li>
+              <li>Screenshots</li>
+              <li>App Context & Progress</li>
+              <li>Subscriptions & Costs</li>
+              <li>Daily/Weekly/Monthly Summaries</li>
+              <li>Notifications</li>
+            </ul>
+          </Text>
         </Box>
         <Box mt={8}>
           <Heading as="h3" size="lg" mb={4}>
-            Notifications
+            Tech Stack
           </Heading>
-          <Text>Notification content goes here...</Text>
+          <Text>
+            The dashboard is built using the following technologies:
+            <ul>
+              <li>React</li>
+              <li>Chakra UI</li>
+              <li>React Router</li>
+              <li>Axios</li>
+              <li>Framer Motion</li>
+              <li>React Icons</li>
+            </ul>
+          </Text>
+        </Box>
+        <Box mt={8}>
+          <Heading as="h3" size="lg" mb={4}>
+            Step-by-Step Implementation
+          </Heading>
+          <Text>
+            The implementation of the dashboard is divided into the following steps:
+            <ul>
+              <li>Setting up the project</li>
+              <li>Implementing the navigation bar</li>
+              <li>Creating the home page</li>
+              <li>Integrating the ManicTime API</li>
+              <li>Integrating the AIML API</li>
+              <li>Integrating the Codehooks API</li>
+              <li>Adding the About page</li>
+              <li>Testing and debugging</li>
+              <li>Final review and deployment</li>
+            </ul>
+          </Text>
+        </Box>
+        <Box mt={8}>
+          <Heading as="h3" size="lg" mb={4}>
+            Testing and Debugging
+          </Heading>
+          <Text>
+            To ensure the dashboard functions correctly, the following testing and debugging steps are performed:
+            <ul>
+              <li>Unit testing</li>
+              <li>Integration testing</li>
+              <li>End-to-end testing</li>
+              <li>Debugging using browser developer tools</li>
+            </ul>
+          </Text>
+        </Box>
+        <Box mt={8}>
+          <Heading as="h3" size="lg" mb={4}>
+            Enhancements and Improvements
+          </Heading>
+          <Text>
+            The following enhancements and improvements are planned for future updates:
+            <ul>
+              <li>Improved user interface</li>
+              <li>Additional features</li>
+              <li>Performance optimizations</li>
+              <li>Better error handling</li>
+            </ul>
+          </Text>
+        </Box>
+        <Box mt={8}>
+          <Heading as="h3" size="lg" mb={4}>
+            Final Review and Deployment
+          </Heading>
+          <Text>
+            The final review and deployment process includes the following steps:
+            <ul>
+              <li>Code review</li>
+              <li>Final testing</li>
+              <li>Deployment to production</li>
+              <li>Monitoring and maintenance</li>
+            </ul>
+          </Text>
         </Box>
       </VStack>
       <Box as="footer" mt={8} p={4} bg="gray.200" textAlign="center">
